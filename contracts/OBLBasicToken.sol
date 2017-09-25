@@ -22,7 +22,6 @@ contract OBLBasicToken is Protection, Ownable, PausableToken {
 	string public name = "OrangeBlockLab Token";
 	string public symbol = "OBL";
 	uint256 public decimals = 8;
-	uint256 public INITIAL_SUPPLY = 50000000000000000;
 
 	string public version = '0.0.1';
 
@@ -42,9 +41,9 @@ contract OBLBasicToken is Protection, Ownable, PausableToken {
 	/**
 	 * @dev Contructor that gives msg.sender all of existing tokens. 
 	 */
-	function OBLBasicToken() onlyOwner {
-		totalSupply = INITIAL_SUPPLY;
-		balances[msg.sender] = INITIAL_SUPPLY;
+	function OBLBasicToken(uint256 initialSupply) onlyOwner {
+		totalSupply = initialSupply;
+		balances[msg.sender] = initialSupply;
 	}
 
 	/**

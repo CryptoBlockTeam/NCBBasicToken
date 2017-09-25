@@ -13,7 +13,7 @@ const evmThrewError = (err) => {
 }
 
 const oneToken = 100000000
-const initialSupply = 500000000 * oneToken
+const initialSupply = 100000000 * oneToken
 const tenThousandsTokens = 10000 * oneToken
 const thousandTokens = 1000 * oneToken
 const hundredTokens = 100 * oneToken
@@ -24,16 +24,17 @@ before(() => {
   var contractInfo = '';
   contractInfo ="-".repeat(40);
   contractInfo += "\n" + "Current date is: " + new Date().toLocaleString("en-US", {timeZone: "UTC"});
-  OBLToken.deployed().then((token) => (token.name()).then((name) => console.log("  Token Name: " + name) ));
-  OBLToken.deployed().then((token) => (token.symbol()).then((symbol) => console.log("  Token Symbol: " + symbol) ));
-  OBLToken.deployed().then((token) => (token.version()).then((version) => console.log("  Version: " + version) ));
-  OBLToken.deployed().then((token) => (token.decimals()).then((decimals) => console.log("  Decimals: " + decimals) ));
   contractInfo += "\n" + "-".repeat(40);
   console.log(contractInfo)
+
+  OBLToken.deployed().then((token) => (token.name()).then((name) => console.log("  Token Name: " + name) ));
+  OBLToken.deployed().then((token) => (token.symbol()).then((symbol) => console.log("  Token Symbol: " + symbol) ));
+  OBLToken.deployed().then((token) => (token.decimals()).then((decimals) => console.log("  Decimals: " + decimals) ));
+  OBLToken.deployed().then((token) => (token.version()).then((version) => console.log("  Version: " + version) )); 
 })
 
 contract('OBLBasicToken', (accounts) => {
-  it("should have total supply of 500,000,000.00000000 tokens", () => {
+  it("should have total supply of 100,000,000.00000000 tokens", () => {
     return OBLToken.deployed()
       .then((token) => token.totalSupply())
       .then((supply) => assert.equal(supply.valueOf(), initialSupply, "initial supply is not " + initialSupply))
