@@ -15,8 +15,8 @@ pragma solidity ^0.4.11;
 
 import './Protection.sol';
 import './TokenRecipient.sol';
-import 'zeppelin-solidity/contracts/token/PausableToken.sol';
-import 'zeppelin-solidity/contracts/ownership/Ownable.sol';
+import '../zeppelin-solidity/contracts/token/PausableToken.sol';
+import '../zeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract OBLBasicToken is Protection, Ownable, PausableToken {
 	string public name = "OrangeBlockLab Token";
