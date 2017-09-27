@@ -21,10 +21,7 @@ Following is test results that we have
 
 To install the OpenZeppelin library, run:
 ```sh
-npm install zeppelin-solidity
-
-# If you are using yarn, add dependency like this -
-yarn add zeppelin-solidity
+git submodule update --init --recursive
 ```
 
 ##### Copyright &copy; 2017  OrangeBlockLab.
