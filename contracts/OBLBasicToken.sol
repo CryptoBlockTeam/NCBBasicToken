@@ -25,11 +25,6 @@ contract OBLBasicToken is Protection, Ownable, PausableToken {
 
 	string public version = '0.0.1';
 
-	modifier onlyPayloadSize(uint numwords) {
-	    assert(msg.data.length == numwords * 32 + 4);
-	    _;
-	}
-
 	/**
 	 * @dev Logged when claimed tokens were transferred to the owner.
 	 *
