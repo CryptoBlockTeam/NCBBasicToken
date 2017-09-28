@@ -36,7 +36,7 @@ contract OBLBasicToken is Protection, Ownable, PausableToken {
 	/**
 	 * @dev Contructor that gives msg.sender all of existing tokens. 
 	 */
-	function OBLBasicToken(uint256 initialSupply) onlyOwner {
+	function OBLBasicToken(uint256 initialSupply) {
 		totalSupply = initialSupply;
 		balances[msg.sender] = initialSupply;
 	}
