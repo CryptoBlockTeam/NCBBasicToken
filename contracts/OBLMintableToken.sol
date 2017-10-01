@@ -1,5 +1,5 @@
 /**
- * ERC-20 Basic Token Smart Contract implementation.
+ * ERC-20 Mintable Token Smart Contract implementation.
  * 
  * Copyright © 2017 by OrangeBlockLab.
  *
@@ -16,20 +16,39 @@ pragma solidity ^0.4.11;
 import './Protection.sol';
 import './TokenRecipient.sol';
 import './OBLToken.sol';
+import '../zeppelin-solidity/contracts/token/MintableToken.sol';
 
-contract OBLBasicToken is OBLToken {
-	string public name = "OrangeBlockLab Basic Token";
+contract OBLMintableToken is OBLToken, MintableToken {
+	string public name = "OrangeBlockLab Mintable Token";
 	string public symbol = "OBL";
 	uint256 public decimals = 8;
 
 	string public version = '0.0.1';
 
 	/**
+	 * @dev Cap for minted tokens.
+	 */
+	uint256 public capAmount;
+
+	/**
 	 * @dev Contructor that gives msg.sender all of existing tokens. 
 	 */
-	function OBLBasicToken(uint256 initialSupply) {
+	function OBLMintableToken(uint256 initialSupply, uint256 cap) {
 		totalSupply = initialSupply;
+		capAmount = cap;
 		balances[msg.sender] = initialSupply;
+	}
+
+	/**
+   	 * @dev Function to mint tokens only if cap not reached.
+   	 * @param _to The address that will receive the minted tokens.
+     * @param _amount The amount of tokens to mint.
+     * @return A boolean that indicates if the operation was successful.
+     */
+	function mint(address _to, uint256 _amount) onlyOwner canMint public returns (bool){
+		uint256 newTotalSupply = totalSupply.add(_amount);
+		require(newTotalSupply <= capAmount);
+		return super.mint(_to, _amount);
 	}
 
   	/**
@@ -42,7 +61,7 @@ contract OBLBasicToken is OBLToken {
 	        return;
 	    }
 
-	    OBLBasicToken token = OBLBasicToken(_token);
+	    OBLMintableToken token = OBLMintableToken(_token);
 	    uint balance = token.balanceOf(this);
 	    token.transfer(owner, balance);
 
