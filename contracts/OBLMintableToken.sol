@@ -17,8 +17,11 @@ import './Protection.sol';
 import './TokenRecipient.sol';
 import './OBLToken.sol';
 import '../zeppelin-solidity/contracts/token/MintableToken.sol';
+import '../zeppelin-solidity/contracts/math/SafeMath.sol';
 
 contract OBLMintableToken is OBLToken, MintableToken {
+  using SafeMath for uint256;
+
 	string public name = "OrangeBlockLab Mintable Token";
 	string public symbol = "OBL";
 	uint256 public decimals = 8;
@@ -50,6 +53,25 @@ contract OBLMintableToken is OBLToken, MintableToken {
 		require(newTotalSupply <= capAmount);
 		return super.mint(_to, _amount);
 	}
+	/**
+   	 * @dev Function to increase tokens cap limit
+     * @param _amount The amount of tokens to increase cap
+     * @return A boolean that indicates if the operation was successful.
+     */
+	function increaseCapAmount(uint256 _amount) onlyOwner returns (bool) {
+        capAmount = capAmount.add(_amount);
+        return true;
+    }
+
+	/**
+   	 * @dev Function to decrease tokens cap limit
+     * @param _amount The amount of tokens to decrease cap
+     * @return A boolean that indicates if the operation was successful.
+     */
+    function decreaseCapAmount(uint256 _amount) onlyOwner returns (bool) {
+        capAmount = capAmount.sub(_amount);
+        return true;
+    }
 
   	/**
 	 * @dev Peterson's Law Protection

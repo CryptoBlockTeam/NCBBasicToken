@@ -58,11 +58,6 @@ contract('OBLMintableToken', (accounts) => {
       return token.totalSupply()
         .then((supply) => assert.equal(supply.valueOf(), initialSupply, "initial supply is not " + initialSupply))
     })
-
-    it("should have supply cap of 500,000,000.00000000 tokens", async () => {
-      return token.capAmount()
-        .then((cap) => assert.equal(cap.valueOf(), capAmount, "cap is not " + capAmount))
-    })
   })
 
   describe("Simple transfers", () => {
@@ -92,7 +87,33 @@ contract('OBLMintableToken', (accounts) => {
         .then(balance => assert.equal(balance.valueOf(), oneToken, "vulnerable to short address attack"))
       })
   })
+  
+  describe("Cap operations", () => {
+    it("should have supply cap of 500,000,000.00000000 tokens", async () => {
+      return token.capAmount()
+        .then((cap) => assert.equal(cap.valueOf(), capAmount, "cap is not " + capAmount))
+    })
 
+    it("should increase cap amount with 74000", () => {
+      return token.increaseCapAmount(74000, { from: accounts[0] })
+        .then(() => token.capAmount())
+        .then((cap) => assert.equal(cap.valueOf(), 50000000000074000, "did not increase cap with 74000"))
+    })
+
+    it("should decrease cap amount with 74000", () => {
+      return token.decreaseCapAmount(74000, { from: accounts[0] })
+        .then(() => token.capAmount())
+        .then((cap) => assert.equal(cap.valueOf(), 50000000000000000, "did not decrease cap with 74000"))
+    })
+  })
+
+  describe("Mint", () => {
+    it("should mint 74000 new tokens", () => {
+      return token.mint(accounts[0], 74000, { from: accounts[0] })
+        .then(() => token.totalSupply())
+        .then((balance) => assert.equal(balance.valueOf(), 10000000000074000, "did not mint 74000 tokens"))
+      })
+  })
 
   describe("Approval/Allowance", () => {
     it("account 2 should approve account 3 spending 100 tokens", async () => {
