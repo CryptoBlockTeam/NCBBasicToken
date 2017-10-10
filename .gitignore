@@ -1,8 +1,8 @@
 *.swp
 *.swo
 node_modules/
-build/
 .DS_Store/
+docs/.DS_Store
 /coverage
 coverage.json
 allFiredEvents
