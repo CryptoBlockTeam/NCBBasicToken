@@ -1,5 +1,5 @@
 /**
- * ERC-20 Standard Token Smart Contract implementation.
+ * ERC-20 Basic Token Smart Contract implementation.
  * 
  * Copyright © 2017 by OrangeBlockLab.
  *
@@ -15,23 +15,14 @@ pragma solidity ^0.4.11;
 
 import './Protection.sol';
 import './TokenRecipient.sol';
-import '../zeppelin-solidity/contracts/token/PausableToken.sol';
-import '../zeppelin-solidity/contracts/ownership/Ownable.sol';
+import './OBLToken.sol';
 
-contract OBLBasicToken is Protection, Ownable, PausableToken {
-	string public name = "OrangeBlockLab Token";
+contract OBLBasicToken is OBLToken {
+	string public name = "OrangeBlockLab Basic Token";
 	string public symbol = "OBL";
 	uint256 public decimals = 8;
 
 	string public version = '0.0.1';
-
-	/**
-	 * @dev Logged when claimed tokens were transferred to the owner.
-	 *
-	 * @param _to address of the owner, tokens were transferred to
-	 * @param _value number of tokens transferred
-	 */
-	event ClaimTransfer (address indexed _to, uint256 _value);
 
 	/**
 	 * @dev Contructor that gives msg.sender all of existing tokens. 
@@ -40,38 +31,6 @@ contract OBLBasicToken is Protection, Ownable, PausableToken {
 		totalSupply = initialSupply;
 		balances[msg.sender] = initialSupply;
 	}
-
-	/**
-     * @dev Transfer with short address attack protection
-     */
-	function transfer(address _to, uint _value) onlyPayloadSize(2) returns (bool) {
-    	return super.transfer(_to, _value);
-  	}
-
-	/**
-     * @dev TransferFrom with short address attack protection
-     */
-	function transferFrom(address _from, address _to, uint _value) onlyPayloadSize(3) returns (bool) {
-		return super.transferFrom(_from, _to, _value);
-	}
-
-	/**
-     * @dev Allowance with short address attack protection
-     */
-	function allowance(address _owner, address _spender) onlyPayloadSize(2) constant returns (uint256 remaining) {
-    	return super.allowance(_owner, _spender);
-  	}
-
-	/**
-     * @dev Approve and then communicate the approved contract in a single transaction
-     */
-    function approveAndCall(address _spender, uint256 _value, bytes _extraData) returns (bool success) {
-        TokenRecipient spender = TokenRecipient(_spender);
-        if (approve(_spender, _value)) {
-            spender.receiveApproval(msg.sender, _value, this, _extraData);
-            return true;
-        }
-    }
 
   	/**
 	 * @dev Peterson's Law Protection
