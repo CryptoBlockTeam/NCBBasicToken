@@ -1,32 +1,32 @@
-# OrangeBlockLab OBL Token
+# NewCryptoBlock NCB Token
 
-This is implementation of ERC20 OBL tokens.
+This is implementation of ERC20 NCB tokens.
 
 ## Implementations
 
-The OBL tokens are implemented using [Solidity](http://solidity.readthedocs.io "Solidity"), the most widely used high level language targeting the EVM and [Open Zeppelin](https://openzeppelin.org/ "Open Zeppelin") framework. [Truffle Framework](http://truffleframework.com "Truffle Framework") is used for easy compilation, migration and testing.
+The NCB tokens are implemented using [Solidity](http://solidity.readthedocs.io "Solidity"), the most widely used high level language targeting the EVM and [Open Zeppelin](https://openzeppelin.org/ "Open Zeppelin") framework. [Truffle Framework](http://truffleframework.com "Truffle Framework") is used for easy compilation, migration and testing.
 
-### OBLToken
+### NCBToken
 
 Basic ERC implementation supporting following protections:
 - Pause and Unpause transfers
 - Short address protection
 - Peterson's Law Protection
 
-### OBLBasicToken
+### NCBBasicToken
 
-Inherits OBLToken with following additional support:
+Inherits NCBToken with following additional support:
 - Initial token total supply
 
 #### Test Results
 
 Following is test results that we have
 
-![OBLBasicToken test results](docs/OBLBasicToken-test-results.png)
+![NCBBasicToken test results](docs/NCBBasicToken-test-results.png)
 
-### OBLMintableToken
+### NCBMintableToken
 
-Inherits OBLToken with following additional support:
+Inherits NCBToken with following additional support:
 - Initial token supply
 - Max cap token amount
 - Minting tokens
@@ -35,7 +35,7 @@ Inherits OBLToken with following additional support:
 
 Following is test results that we have
 
-![OBLMintableToken test results](docs/OBLMintableToken-test-results.png)
+![NCBMintableToken test results](docs/NCBMintableToken-test-results.png)
   
 ### Instructions
 
@@ -49,4 +49,4 @@ To install Truffle framework, run:
 npm install -g truffle
 ```
 
-##### Copyright &copy; 2017  OrangeBlockLab.
+##### Copyright &copy; 2018 NewCryptoBlock.

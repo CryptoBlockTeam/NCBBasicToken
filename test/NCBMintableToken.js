@@ -1,4 +1,4 @@
-var OBLToken = artifacts.require("./OBLMintableToken.sol");
+var NCBToken = artifacts.require("./NCBMintableToken.sol");
 
 var SampleRecipientSuccess = artifacts.require('./SampleRecipientSuccess.sol')
 var SampleRecipientThrow = artifacts.require('./SampleRecipientThrow.sol')
@@ -13,7 +13,7 @@ const evmThrewError = (err) => {
 }
 
 
-var oneToken, 
+var oneToken,
     initialSupply,
     capAmount,
     tenThousandsTokens,
@@ -22,10 +22,10 @@ var oneToken,
     fiftyTokens
 
 
-contract('OBLMintableToken', (accounts) => {
+contract('NCBMintableToken', (accounts) => {
   let token
   before(async function () {
-    token = await OBLToken.deployed()
+    token = await NCBToken.deployed()
     let name = await token.name()
     let symbol = await token.symbol()
     let decimals = await token.decimals()
@@ -35,7 +35,7 @@ contract('OBLMintableToken', (accounts) => {
     contractInfo ="  " + "-".repeat(40);
     contractInfo += "\n  " + "Current date is: " + new Date().toLocaleString("en-US", {timeZone: "UTC"});
     contractInfo += "\n  " + "-".repeat(40);
-    
+
     contractInfo += "\n  Token Name: " + name
     contractInfo += "\n  Token Symbol: " + symbol
     contractInfo += "\n  Decimals: " + decimals
@@ -64,7 +64,7 @@ contract('OBLMintableToken', (accounts) => {
     it("should transfer 1,000 tokens to account 2", async () => {
       return token.transfer(accounts[1], thousandTokens, { from: accounts[0] })
             .then(() => token.balanceOf(accounts[1]))
-            .then((balance) => assert.equal(balance.valueOf(), thousandTokens, "account balance is not " + thousandTokens))  
+            .then((balance) => assert.equal(balance.valueOf(), thousandTokens, "account balance is not " + thousandTokens))
     })
 
     it("account 1 should have 1,000 less tokens", async () => {
@@ -87,7 +87,7 @@ contract('OBLMintableToken', (accounts) => {
         .then(balance => assert.equal(balance.valueOf(), oneToken, "vulnerable to short address attack"))
       })
   })
-  
+
   describe("Cap operations", () => {
     it("should have supply cap of 500,000,000.00000000 tokens", async () => {
       return token.capAmount()

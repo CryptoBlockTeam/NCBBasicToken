@@ -1,7 +1,7 @@
 /**
  * ERC-20 Token Smart Contract implementation.
- * 
- * Copyright © 2017 by OrangeBlockLab.
+ *
+ * Copyright © 2018 by NewCryptoBlock.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -17,9 +17,9 @@ import './Protection.sol';
 import './TokenRecipient.sol';
 import '../zeppelin-solidity/contracts/token/PausableToken.sol';
 
-contract OBLToken is Protection, PausableToken {
-	string public name = "OrangeBlockLab Mintable Token";
-	string public symbol = "OBL";
+contract NCBToken is Protection, PausableToken {
+	string public name = "NewCryptoBlock Mintable Token";
+	string public symbol = "NCB";
 	uint256 public decimals = 8;
 
 	string public version = '0.0.2';

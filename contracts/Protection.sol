@@ -1,7 +1,7 @@
 /**
  * Short address attack protection Smart Contract implementation.
- * 
- * Copyright © 2017 by OrangeBlockLab.
+ *
+ * Copyright © 2018 by NewCryptoBlock.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -15,7 +15,7 @@ pragma solidity ^0.4.11;
 
 contract Protection {
 
-	/** 
+	/**
 	 * @dev Protection against short address attack
 	 */
 	modifier onlyPayloadSize(uint numwords) {

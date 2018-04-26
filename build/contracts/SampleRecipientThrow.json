@@ -1,8 +1,97 @@
 {
-  "contract_name": "SampleRecipientThrow",
+  "contractName": "SampleRecipientThrow",
   "abi": [],
-  "unlinked_binary": "0x60606040523415600e57600080fd5b5b603680601c6000396000f30060606040525b600080fd00a165627a7a723058205e819b4795cf6a6c9ae2ea6ff7fe4ad0ff6918c5cc6b03cc0642e3fe1b9e42ec0029",
+  "bytecode": "0x60606040523415600e57600080fd5b603580601b6000396000f3006060604052600080fd00a165627a7a72305820d0e1eb5e31f8a812b4d23a5698d391125edf739d5193c72b97aae393d5a485be0029",
+  "deployedBytecode": "0x6060604052600080fd00a165627a7a72305820d0e1eb5e31f8a812b4d23a5698d391125edf739d5193c72b97aae393d5a485be0029",
+  "sourceMap": "469:33:6:-;;;;;;;;;;;;;;;;;",
+  "deployedSourceMap": "469:33:6:-;;;;;",
+  "source": "/**\n * SampleRecipientThrow Smart Contract.\n *\n * Copyright © 2017 by OrangeBlockLab.\n *\n * Licensed under the Apache License, Version 2.0 (the \"License\").\n * You may not use this file except in compliance with the License.\n *\n * Unless required by applicable law or agreed to in writing, software\n * distributed under the License is distributed on an \"AS IS\" BASIS,\n * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND (express or implied).\n */\n\npragma solidity ^0.4.11;\n\ncontract SampleRecipientThrow {\n}",
+  "sourcePath": "/Users/dimitarjelev/Projects/orangeblock/basic/contracts/SampleRecipientThrow.sol",
+  "ast": {
+    "absolutePath": "/Users/dimitarjelev/Projects/orangeblock/basic/contracts/SampleRecipientThrow.sol",
+    "exportedSymbols": {
+      "SampleRecipientThrow": [
+        488
+      ]
+    },
+    "id": 489,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 487,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "443:24:6"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 488,
+        "linearizedBaseContracts": [
+          488
+        ],
+        "name": "SampleRecipientThrow",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 489,
+        "src": "469:33:6"
+      }
+    ],
+    "src": "443:59:6"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/dimitarjelev/Projects/orangeblock/basic/contracts/SampleRecipientThrow.sol",
+    "exportedSymbols": {
+      "SampleRecipientThrow": [
+        488
+      ]
+    },
+    "id": 489,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 487,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".11"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "443:24:6"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 488,
+        "linearizedBaseContracts": [
+          488
+        ],
+        "name": "SampleRecipientThrow",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 489,
+        "src": "469:33:6"
+      }
+    ],
+    "src": "443:59:6"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.21+commit.dfe3193c.Emscripten.clang"
+  },
   "networks": {},
-  "schema_version": "0.0.5",
-  "updated_at": 1507671381730
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-04-26T12:38:19.125Z"
 }

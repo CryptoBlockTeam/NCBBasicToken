@@ -1,7 +1,7 @@
 /**
  * ERC-20 Mintable Token Smart Contract implementation.
- * 
- * Copyright © 2017 by OrangeBlockLab.
+ *
+ * Copyright © 2018 by NewCryptoBlock.
  *
  * Licensed under the Apache License, Version 2.0 (the "License").
  * You may not use this file except in compliance with the License.
@@ -15,15 +15,15 @@ pragma solidity ^0.4.11;
 
 import './Protection.sol';
 import './TokenRecipient.sol';
-import './OBLToken.sol';
+import './NCBToken.sol';
 import '../zeppelin-solidity/contracts/token/MintableToken.sol';
 import '../zeppelin-solidity/contracts/math/SafeMath.sol';
 
-contract OBLMintableToken is OBLToken, MintableToken {
+contract NCBMintableToken is NCBToken, MintableToken {
   using SafeMath for uint256;
 
-	string public name = "OrangeBlockLab Mintable Token";
-	string public symbol = "OBL";
+	string public name = "NewCryptoBlock Mintable Token";
+	string public symbol = "NCB";
 	uint256 public decimals = 8;
 
 	string public version = '0.0.1';
@@ -34,9 +34,9 @@ contract OBLMintableToken is OBLToken, MintableToken {
 	uint256 public capAmount;
 
 	/**
-	 * @dev Contructor that gives msg.sender all of existing tokens. 
+	 * @dev Contructor that gives msg.sender all of existing tokens.
 	 */
-	function OBLMintableToken(uint256 initialSupply, uint256 cap) {
+	function NCBMintableToken(uint256 initialSupply, uint256 cap) {
 		totalSupply = initialSupply;
 		capAmount = cap;
 		balances[msg.sender] = initialSupply;
@@ -83,7 +83,7 @@ contract OBLMintableToken is OBLToken, MintableToken {
 	        return;
 	    }
 
-	    OBLMintableToken token = OBLMintableToken(_token);
+		NCBMintableToken token = NCBMintableToken(_token);
 	    uint balance = token.balanceOf(this);
 	    token.transfer(owner, balance);
 

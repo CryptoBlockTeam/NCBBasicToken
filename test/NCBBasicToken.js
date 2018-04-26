@@ -1,4 +1,4 @@
-var OBLToken = artifacts.require("./OBLBasicToken.sol");
+var NCBToken = artifacts.require("./NCBBasicToken.sol");
 
 var SampleRecipientSuccess = artifacts.require('./SampleRecipientSuccess.sol')
 var SampleRecipientThrow = artifacts.require('./SampleRecipientThrow.sol')
@@ -19,10 +19,10 @@ const thousandTokens = 1000 * oneToken
 const hundredTokens = 100 * oneToken
 const fiftyTokens = 50 * oneToken
 
-contract('OBLBasicToken', (accounts) => {
+contract('NCBBasicToken', (accounts) => {
   let token
   before(async function () {
-    token = await OBLToken.deployed()
+    token = await NCBToken.deployed()
     let name = await token.name()
     let symbol = await token.symbol()
     let decimals = await token.decimals()
@@ -32,7 +32,7 @@ contract('OBLBasicToken', (accounts) => {
     contractInfo ="  " + "-".repeat(40);
     contractInfo += "\n  " + "Current date is: " + new Date().toLocaleString("en-US", {timeZone: "UTC"});
     contractInfo += "\n  " + "-".repeat(40);
-    
+
     contractInfo += "\n  Token Name: " + name
     contractInfo += "\n  Token Symbol: " + symbol
     contractInfo += "\n  Decimals: " + decimals
@@ -53,7 +53,7 @@ contract('OBLBasicToken', (accounts) => {
     it("should transfer 1,000 tokens to account 2", async () => {
       return token.transfer(accounts[1], thousandTokens, { from: accounts[0] })
             .then(() => token.balanceOf(accounts[1]))
-            .then((balance) => assert.equal(balance.valueOf(), thousandTokens, "account balance is not " + thousandTokens))  
+            .then((balance) => assert.equal(balance.valueOf(), thousandTokens, "account balance is not " + thousandTokens))
     })
 
     it("account 1 should have 1,000 less tokens", async () => {
